@@ -1,15 +1,20 @@
+<!--
+ * @Description: 
+ * @Autor: HWK
+ * @Date: 2020-09-16 22:20:03
+ * @LastEditors: HWK
+ * @LastEditTime: 2020-10-10 23:07:00
+-->
 <template>
   <ul class="list">
-    <li
-      class="item"
-      v-for="item of letters"
-      :key="item"
-      :ref="item"
-      @touchstart.prevent="handleTouchStart"
-      @touchmove="handleTouchMove"
-      @touchend="handleTouchEnd"
-      @click="handleLetterClick"
-    >
+    <li class="item"
+        v-for="item of letters"
+        :key="item"
+        :ref="item"
+        @touchstart.prevent="handleTouchStart"
+        @touchmove="handleTouchMove"
+        @touchend="handleTouchEnd"
+        @click="handleLetterClick">
       {{item}}
     </li>
   </ul>
@@ -19,35 +24,35 @@
 export default {
   name: 'CityAlphabet',
   props: {
-    cities: Object
+    cities: Object,
   },
   computed: {
-    letters () {
+    letters() {
       const letters = []
       for (let i in this.cities) {
         letters.push(i)
       }
       return letters
-    }
+    },
   },
-  data () {
+  data() {
     return {
       touchStatus: false,
       startY: 0,
-      timer: null
+      timer: null,
     }
   },
-  updated () {
+  updated() {
     this.startY = this.$refs['A'][0].offsetTop
   },
   methods: {
-    handleLetterClick (e) {
+    handleLetterClick(e) {
       this.$emit('change', e.target.innerText)
     },
-    handleTouchStart () {
+    handleTouchStart() {
       this.touchStatus = true
     },
-    handleTouchMove (e) {
+    handleTouchMove(e) {
       if (this.touchStatus) {
         if (this.timer) {
           clearTimeout(this.timer)
@@ -61,26 +66,26 @@ export default {
         }, 16)
       }
     },
-    handleTouchEnd () {
+    handleTouchEnd() {
       this.touchStatus = false
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style lang="stylus" scoped>
-  @import '~styles/varibles.styl'
-  .list
-    display: flex
-    flex-direction: column
-    justify-content: center
-    position: absolute
-    top: 1.58rem
-    right: 0
-    bottom: 0
-    width: .4rem
-    .item
-      line-height: .4rem
-      text-align: center
-      color: $bgColor
+@import '~styles/varibles.styl'
+.list
+  display flex
+  flex-direction column
+  justify-content center
+  position absolute
+  top 1.58rem
+  right 0
+  bottom 0
+  width 0.4rem
+  .item
+    line-height 0.4rem
+    text-align center
+    color $bgColor
 </style>

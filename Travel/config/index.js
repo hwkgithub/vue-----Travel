@@ -1,3 +1,10 @@
+/*
+ * @Description: 
+ * @Autor: HWK
+ * @Date: 2020-09-16 22:20:03
+ * @LastEditors: HWK
+ * @LastEditTime: 2020-10-10 23:30:40
+ */
 'use strict'
 // Template version: 1.3.1
 // see http://vuejs-templates.github.io/webpack for documentation.
@@ -12,7 +19,7 @@ module.exports = {
     assetsPublicPath: '/project',
     proxyTable: {
       '/api': {
-        target: 'http://localhost:80'
+        target: 'http://localhost:8080'
       }
     },
 
